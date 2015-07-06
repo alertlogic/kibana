@@ -301,7 +301,7 @@ function (angular, $, kbn, _, config, moment, Modernizr) {
     var renderTemplate = function(json,params) {
       var _r;
       _.templateSettings = {interpolate : /\{\{(.+?)\}\}/g};
-      var template = _.template(json);
+      var template = _.template(typeof json == "string" ? json : JSON.stringify(json));
       var rendered = template({ARGS:params});
       try {
         _r = angular.fromJson(rendered);
